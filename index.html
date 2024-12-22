@@ -1,0 +1,169 @@
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Khách Sạn</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				background-color: #f4f4f9;
+			}
+	
+			header {
+				background-color: #ffffff;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 10px 50px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+	
+			.logo {
+				display: flex;
+				align-items: center;
+			}
+	
+			.logo img {
+				height: 50px;
+				margin-right: 10px;
+			}
+	
+			nav ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: flex;
+			}
+	
+			nav ul li {
+				margin: 0 15px;
+			}
+	
+			nav ul li a {
+				text-decoration: none;
+				color: #333;
+				font-weight: bold;
+				transition: color 0.3s;
+			}
+	
+			nav ul li a:hover {
+				color: #6200ea;
+			}
+	
+			.language {
+				display: flex;
+				align-items: center;
+			}
+	
+			.language img {
+				width: 24px;
+				height: 24px;
+				margin-left: 10px;
+				cursor: pointer;
+			}
+	
+			.hero {
+				position: relative;
+				text-align: center;
+				color: white;
+			}
+	
+			.hero img {
+				width: 100%;
+				height: auto;
+			}
+	
+			.hero .overlay {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+	
+			.hero .overlay h1 {
+				font-size: 3rem;
+				margin: 0;
+			}
+	
+			.hero .overlay p {
+				font-size: 1.2rem;
+				margin: 10px 0;
+			}
+	
+			.hero .overlay button {
+				background-color: #6200ea;
+				color: white;
+				border: none;
+				padding: 10px 20px;
+				border-radius: 4px;
+				font-size: 1rem;
+				cursor: pointer;
+				transition: background-color 0.3s;
+			}
+	
+			.hero .overlay button:hover {
+				background-color: #3700b3;
+			}
+	
+			.contact {
+				position: absolute;
+				bottom: 20px;
+				left: 20px;
+				background-color: rgba(255, 255, 255, 0.8);
+				padding: 10px 20px;
+				border-radius: 8px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+	
+			.contact p {
+				margin: 0;
+				color: #333;
+				font-weight: bold;
+			}
+		</style>
+		<script>
+      function showPhoneNumber() {
+        // Show the alert with phone number
+        alert("Số điện thoại liên hệ là: 0969194193");
+    }
+</script>
+	<body>
+		<header>
+			<div class="logo">
+				<img src="index.jpg.jpg" alt="Logo">
+				<h1>Golden Sands Hotel</h1>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="index.html">Trang Chủ</a></li>
+					<li><a href="web_nhahang.html">Đặt Phòng</a></li>
+					<li><a href="menu.html">Đặt món</a></li>
+					<li><a href="#" onclick="showPhoneNumber()">Liên Hệ</a></li>
+					<li><a href="login.html" >Đăng xuất</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section class="hero">
+			<img src="home.jpg" alt="Khách Sạn">
+			<div class="overlay">
+				<h1>Chào Mừng Đến Với Khách Sạn</h1>
+				<p>Trải nghiệm dịch vụ đẳng cấp 5<span style="color: gold;">★</span> </p>
+			   <button onclick="location.href='web_nhahang.html'">Đặt Phòng</button>
+			</div>
+			<div class="contact">
+				<p>Hotline: 0969 194 193</p>
+			</div>
+		</section>
+
+	</body>
+	</html>

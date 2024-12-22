@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Phòng Khách Sạn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #6200ea;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group select {
+            width: 92.7%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+		.form-group input {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-actions {
+            text-align: center;
+        }
+
+        .form-actions button {
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-actions button:hover {
+            background-color: #3700b3;
+        }
+    </style>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert("Đặt phòng thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất có thể.");
+			   window.location.href = "index.html";
+        }
+		 function showPhoneNumber() {
+        // Show the alert with phone number
+        alert("Số điện thoại liên hệ là: 0969194193");
+    }
+    </script>
+</head>
+<body>
+		<header>
+			<div class="logo">
+				<img src="index.jpg.jpg" alt="Logo">
+				<h1>Golden Sands Hotel</h1>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="index.html">Trang Chủ</a></li>
+					<li><a href="web_nhahang.html">Đặt Phòng</a></li>
+					<li><a href="menu.html">Đặt món</a></li>
+					 <li><a href="#" onclick="showPhoneNumber()">Liên Hệ</a></li>
+				</ul>
+			</nav>
+		</header>
+
+    <div class="container">
+        <h2>Thông Tin Đặt Phòng</h2>
+        <form onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="checkin">Ngày nhận phòng</label>
+                <input type="date" id="checkin" name="checkin" required>
+            </div>
+            <div class="form-group">
+                <label for="checkout">Ngày trả phòng</label>
+                <input type="date" id="checkout" name="checkout" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Họ tên</label>
+                <input type="text" id="name" name="name" placeholder="Nhập Họ tên" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" id="phone" name="phone" placeholder="Nhập Số điện thoại" required>
+            </div>
+            <div class="form-group">
+                <label for="email">CCCD</label>
+                <input type="phone" id="phone" name="phone" placeholder="Nhập CCCD" required>
+            </div>
+			<div class="form-group">
+                <label for="email">Địa chỉ</label>
+                <input type="tel" id="phone" name="phone" placeholder="Nhập Địa chỉ" required>
+            </div>
+						<div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="phone" name="phone" placeholder="Nhập Email" required>
+            </div>
+            <div class="form-group">
+                <label for="guests">Số lượng khách</label>
+
+                <input type="number" id="children" name="children" placeholder="Số lượng" required>
+            </div>
+            <div class="form-group">
+                <label for="room">Phòng</label>
+                <select id="room" name="room" required>
+                    <option value="">-- Chọn phòng --</option>
+                    <option value="deluxe">Phòng Deluxe</option>
+                    <option value="suite">Phòng Suite</option>
+                    <option value="standard">Phòng Standard</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Đặt Phòng</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

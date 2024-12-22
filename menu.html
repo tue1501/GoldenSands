@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Hàng - Nhà Hàng</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+        header {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #6200ea;
+        }
+
+
+.menu-section {
+    margin: 20px;
+}
+
+.menu-section h2 {
+    color: #6200ea;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-item {
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.menu-item input[type="checkbox"] {
+    margin-right: 10px; /* Đưa checkbox và label lại gần nhau */
+}
+
+.menu-item input[type="number"] {
+    width: 80px;
+    margin-left: 10px; /* Thêm khoảng cách giữa số lượng và checkbox/label */
+}
+
+.order-form {
+    max-width: 700px; /* Tăng kích thước của form */
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-form select, .order-form button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.order-form input {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.order-form button {
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.order-form button:hover {
+    background-color: #3700b3;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+
+
+input[type="text"], input[type="tel"], input[type="email"] {
+    width: 97%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+    </style>
+	    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert("Đặt món thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất có thể.");
+			   window.location.href = "index.html";
+        }
+		 function showPhoneNumber() {
+        // Show the alert with phone number
+        alert("Số điện thoại liên hệ là: 0969194193");
+    }
+    </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body>
+<header>
+			<div class="logo">
+				<img src="index.jpg.jpg" alt="Logo">
+				<h1>Golden Sands Hotel</h1>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="index.html">Trang Chủ</a></li>
+					<li><a href="web_nhahang.html">Đặt Phòng</a></li>
+					<li><a href="menu.html">Đặt món</a></li>
+					 <li><a href="#" onclick="showPhoneNumber()">Liên Hệ</a></li>
+				</ul>
+			</nav>
+		</header>
+<div class="order-form">
+    <h2>Đặt Hàng</h2>
+	    <form onsubmit="handleSubmit(event)">
+		<div class="form-group">
+            <label for="name">Họ và tên:</label>
+            <input type="text" id="name" name="name" placeholder="Nhập họ và tên" required>
+        </div>
+
+        <!-- Số điện thoại -->
+        <div class="form-group">
+            <label for="phone">Số điện thoại:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
+        </div>
+
+        <!-- Địa chỉ -->
+        <div class="form-group">
+            <label for="address">Phòng:</label>
+            <input type="text" id="address" name="address" placeholder="Nhập Phòng" required>
+        </div>
+
+        <fieldset>
+            <legend>Món khai vị</legend>
+            <div class="menu-item">
+                <input type="checkbox" id="goi_sua" name="menu[]" value="Gỏi sứa biển Quy Nhơn - 120,000 VNĐ">
+                <label for="goi_sua">Gỏi sứa biển Quy Nhơn - 120,000 VNĐ</label>
+                <input type="number" id="goi_sua_qty" name="goi_sua_qty" min="1" placeholder="Số lượng">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="cha_ca_banh_trang" name="menu[]" value="Chả cá cuốn bánh tráng - 100,000 VNĐ">
+                <label for="cha_ca_banh_trang">Chả cá cuốn bánh tráng - 100,000 VNĐ</label>
+                <input type="number" id="cha_ca_banh_trang_qty" name="cha_ca_banh_trang_qty" min="1" placeholder="Số lượng">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="banh_it_la_gai" name="menu[]" value="Bánh ít lá gai mini - 50,000 VNĐ">
+                <label for="banh_it_la_gai">Bánh ít lá gai mini - 50,000 VNĐ</label>
+                <input type="number" id="banh_it_la_gai_qty" name="banh_it_la_gai_qty" min="1" placeholder="Số lượng">
+            </div>
+        </fieldset>
+
+        <!-- Món chính -->
+        <fieldset>
+            <legend>Món chính</legend>
+            <div class="menu-item">
+                <input type="checkbox" id="bun_cha_ca" name="menu[]" value="Bún chả cá Quy Nhơn - 80,000 VNĐ">
+                <label for="bun_cha_ca">Bún chả cá Quy Nhơn - 80,000 VNĐ</label>
+                <input type="number" id="bun_cha_ca_qty" name="bun_cha_ca_qty" min="1" placeholder="Số lượng">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="ca_thu_nuong" name="menu[]" value="Cá thu nướng muối ớt - 250,000 VNĐ">
+                <label for="ca_thu_nuong">Cá thu nướng muối ớt - 250,000 VNĐ</label>
+                <input type="number" id="ca_thu_nuong_qty" name="ca_thu_nuong_qty" min="1" placeholder="Số lượng">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="banh_xeo_tom_nhay" name="menu[]" value="Bánh xèo tôm nhảy - 120,000 VNĐ">
+                <label for="banh_xeo_tom_nhay">Bánh xèo tôm nhảy - 120,000 VNĐ</label>
+                <input type="number" id="banh_xeo_tom_nhay_qty" name="banh_xeo_tom_nhay_qty" min="1" placeholder="Số lượng">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="lau_rieu_cua" name="menu[]" value="Lẩu riêu cua hải sản Quy Nhơn (cho 4 người) - 350,000 VNĐ">
+                <label for="lau_rieu_cua">Lẩu riêu cua hải sản Quy Nhơn (cho 4 người) - 350,000 VNĐ</label>
+                <input type="number" id="lau_rieu_cua_qty" name="lau_rieu_cua_qty" min="1" placeholder="Số lượng">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="ga_nuong_lu" name="menu[]" value="Gà nướng lu Bình Định - 300,000 VNĐ">
+                <label for="ga_nuong_lu">Gà nướng lu Bình Định - 300,000 VNĐ</label>
+                <input type="number" id="ga_nuong_lu_qty" name="ga_nuong_lu_qty" min="1" placeholder="Số lượng">
+            </div>
+        </fieldset>
+
+        <!-- Món ăn nhẹ -->
+        <fieldset>
+            <legend>Món ăn nhẹ</legend>
+            <div class="menu-item">
+                <input type="checkbox" id="banh_hoi_long_heo" name="menu[]" value="Bánh hỏi lòng heo - 120,000 VNĐ">
+                <label for="banh_hoi_long_heo">Bánh hỏi lòng heo - 120,000 VNĐ</label>
+                <input type="number" id="banh_hoi_long_heo_qty" name="banh_hoi_long_heo_qty" min="1" placeholder="Số lượng">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="nem_nuong_binh_dinh" name="menu[]" value="Nem nướng Bình Định - 100,000 VNĐ">
+                <label for="nem_nuong_binh_dinh">Nem nướng Bình Định - 100,000 VNĐ</label>
+                <input type="number" id="nem_nuong_binh_dinh_qty" name="nem_nuong_binh_dinh_qty" min="1" placeholder="Số lượng">
+            </div>
+        </fieldset>
+
+        <!-- Món tráng miệng -->
+        <fieldset>
+            <legend>Món tráng miệng</legend>
+            <div class="menu-item">
+                <input type="checkbox" id="che_dau_xanh" name="menu[]" value="Chè đậu xanh cốt dừa Quy Nhơn - 50,000 VNĐ">
+                <label for="che_dau_xanh">Chè đậu xanh cốt dừa Quy Nhơn - 50,000 VNĐ</label>
+                <input type="number" id="che_dau_xanh_qty" name="che_dau_xanh_qty" min="1" placeholder="Số lượng">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="banh_trang_me_dua" name="menu[]" value="Bánh tráng mè dừa nướng - 30,000 VNĐ">
+                <label for="banh_trang_me_dua">Bánh tráng mè dừa nướng - 30,000 VNĐ</label>
+                <input type="number" id="banh_trang_me_dua_qty" name="banh_trang_me_dua_qty" min="1" placeholder="Số lượng">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="kem_dua_tuoi" name="menu[]" value="Kem dừa tươi - 70,000 VNĐ">
+                <label for="kem_dua_tuoi">Kem dừa tươi - 70,000 VNĐ</label>
+                <input type="number" id="kem_dua_tuoi_qty" name="kem_dua_tuoi_qty" min="1" placeholder="Số lượng">
+            </div>
+        </fieldset>
+
+        <!-- Đồ uống -->
+        <fieldset>
+            <legend>Đồ uống</legend>
+            <div class="menu-item">
+                <input type="checkbox" id="nuoc_mia_sau_rieng" name="menu[]" value="Nước mía sầu riêng Bình Định - 40,000 VNĐ">
+                <label for="nuoc_mia_sau_rieng">Nước mía sầu riêng Bình Định - 40,000 VNĐ</label>
+                <input type="number" id="nuoc_mia_sau_rieng_qty" name="nuoc_mia_sau_rieng_qty" min="1" placeholder="Số lượng">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="tra_hat_sen" name="menu[]" value="Trà hạt sen Quy Nhơn - 50,000 VNĐ">
+                <label for="tra_hat_sen">Trà hạt sen Quy Nhơn - 50,000 VNĐ</label>
+                <input type="number" id="tra_hat_sen_qty" name="tra_hat_sen_qty" min="1" placeholder="Số lượng">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="ruou_bau_da" name="menu[]" value="Rượu Bàu Đá (ly) - 100,000 VNĐ">
+                <label for="ruou_bau_da">Rượu Bàu Đá (ly) - 100,000 VNĐ</label>
+                <input type="number" id="ruou_bau_da_qty" name="ruou_bau_da_qty" min="1" placeholder="Số lượng">
+            </div>
+        </fieldset>
+
+        <!-- Menu Buffet -->
+        <fieldset>
+				<legend>Menu Buffet</legend>
+            <div class="menu-item">
+                <input type="checkbox" id="goi_sua_buffet" name="menu[]" value="Buffet">
+                <label for="goi_sua_buffet">Buffet</label>
+            </div>
+            <!-- Thêm các món buffet khác tương tự -->
+        </fieldset>
+
+        <button type="submit">Đặt Hàng</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb); /* Xanh dương pastel */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #555;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            color: #5b9bd5; /* Xanh dương nhạt */
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #5b9bd5;
+            box-shadow: 0 0 5px rgba(91, 155, 213, 0.5);
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #5b9bd5; /* Xanh dương nhạt */
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #7ab9f0; /* Xanh dương sáng hơn khi hover */
+        }
+
+        .error {
+            color: #5b9bd5;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+        }
+
+        p a {
+            color: #5b9bd5;
+            text-decoration: none;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+	  <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            // Lấy giá trị từ các trường tên đăng nhập và mật khẩu
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Kiểm tra tài khoản và mật khẩu
+            if (username === "admin" && password === "123") {
+                alert("Đăng nhập thành công");
+                window.location.href = "index.html"; // Điều hướng đến trang login.html
+            } else {
+                alert("Tên đăng nhập hoặc mật khẩu không đúng!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Đăng nhập</h2>
+        <!-- Hiển thị thông báo lỗi -->
+        <form onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="username">Tên đăng nhập</label>
+                <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Đăng nhập</button>
+            </div>
+        </form>
+        <p>Chưa có tài khoản? <a href="register.html">Đăng ký</a></p>
+    </div>
+</body>
+</html>
