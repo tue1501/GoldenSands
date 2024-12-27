@@ -173,6 +173,21 @@
         window.onload = function() {
             showForm("register");
         };
+        function confirmLogout(event) {
+            // Ngừng hành động mặc định của liên kết
+            event.preventDefault();
+            
+            // Hiển thị hộp thoại xác nhận
+            const isConfirmed = confirm("Bạn có chắc chắn muốn đăng xuất?");
+            
+            // Nếu người dùng xác nhận, chuyển hướng đến trang login.html
+            if (isConfirmed) {
+                window.location.href = "login.html";  // Chuyển hướng đến trang đăng nhập
+            } else {
+                // Nếu người dùng không xác nhận, không làm gì (không chuyển trang)
+                console.log("Đăng xuất bị hủy bỏ.");
+            }
+        }
     </script>
 </head>
 <body>

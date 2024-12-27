@@ -155,6 +155,21 @@
         function showPhoneNumber() {
             alert("Số điện thoại liên hệ là: 0969194193");
         }
+        function confirmLogout(event) {
+            // Ngừng hành động mặc định của liên kết
+            event.preventDefault();
+            
+            // Hiển thị hộp thoại xác nhận
+            const isConfirmed = confirm("Bạn có chắc chắn muốn đăng xuất?");
+            
+            // Nếu người dùng xác nhận, chuyển hướng đến trang login.html
+            if (isConfirmed) {
+                window.location.href = "login.html";  // Chuyển hướng đến trang đăng nhập
+            } else {
+                // Nếu người dùng không xác nhận, không làm gì (không chuyển trang)
+                console.log("Đăng xuất bị hủy bỏ.");
+            }
+        }
     </script>
 </head>
 <body>
@@ -169,7 +184,7 @@
                 <li><a href="web_nhahang.html">Đặt Phòng</a></li>
                 <li><a href="menu.html">Đặt món</a></li>
                 <li><a href="#" onclick="showPhoneNumber()">Liên Hệ</a></li>
-                <li><a href="login.html" >Đăng xuất</a></li>
+                <li><a href="login.html" onclick="confirmLogout(event)">Đăng xuất</a></li>
             </ul>
         </nav>
     </header>
