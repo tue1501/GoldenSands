@@ -124,6 +124,9 @@ body {
     margin-bottom: 15px;
 }
 
+.hidden {
+    display: none;
+}
 
 input[type="text"], input[type="tel"], input[type="email"] {
     width: 97%;
@@ -133,16 +136,114 @@ input[type="text"], input[type="tel"], input[type="email"] {
     border-radius: 4px;
 }
     </style>
-	    <script>
+    <script>
         function handleSubmit(event) {
             event.preventDefault();
-            alert("Đặt món thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất có thể.");
-			   window.location.href = "index.html";
+            
+            // Lấy tất cả các checkbox và số lượng nhập vào
+            const selectedItems = [];
+            const menuItems = document.querySelectorAll('input[name="menu[]"]:checked');
+            let isValid = true;  // Biến để kiểm tra tính hợp lệ của số lượng
+
+            menuItems.forEach((checkbox) => {
+                const itemName = checkbox.value;
+                const quantityInput = document.querySelector(`#${checkbox.id}_qty`);
+                let quantity = quantityInput ? quantityInput.value : 0;
+
+                // Nếu món là Buffet và số lượng chưa được nhập, gán mặc định là 1
+                if (itemName === 'Buffet' && (quantity === '' || quantity <= 0)) {
+                    quantity = 1;  // Số lượng mặc định cho Buffet là 1
+                }
+
+                // Kiểm tra xem số lượng có hợp lệ không
+                if (quantity <= 0 || quantity === '') {
+                    isValid = false;
+                    alert(`Vui lòng nhập số lượng cho món ${itemName}.`);
+                    return;  // Dừng lại nếu số lượng không hợp lệ
+                }
+
+                if (quantity > 0) {
+                    selectedItems.push(`${itemName} - Số lượng: ${quantity}`);
+                }
+            });
+
+        
+            // Nếu không có món nào được chọn hoặc có món không hợp lệ
+            if (!isValid || selectedItems.length === 0) {
+                return;  // Dừng lại nếu có lỗi
+            }
+        
+            const orderSummary = selectedItems.join("\n");
+            alert("Bạn đã đặt các món sau:\n" + orderSummary + "\nChúng tôi sẽ liên hệ với bạn sớm nhất có thể.");    
+            // Quay lại trang chủ hoặc làm gì đó sau khi đặt hàng thành công
+            window.location.href = "index.html";
         }
-		 function showPhoneNumber() {
-        // Show the alert with phone number
-        alert("Số điện thoại liên hệ là: 0969194193");
-    }
+        
+        function showPhoneNumber() {
+            alert("Số điện thoại liên hệ là: 0969194193");
+        }
+        
+        // Hàm kiểm tra và vô hiệu hóa "Buffet" nếu chọn món khác
+        function checkBuffetSelection() {
+            // Lấy phần checkbox Buffet
+            let buffetCheckbox = document.getElementById("goi_sua_buffet");
+            // Lấy tất cả các checkbox món ăn ngoài Buffet
+            let allMenuItems = document.querySelectorAll('input[name="menu[]"]:not(#goi_sua_buffet)');
+            let buffetSection = document.getElementById("buffetSection"); // Phần Buffet
+        
+            // Kiểm tra nếu có món nào được chọn ngoài Buffet
+            let isAnyMenuChecked = false;
+            allMenuItems.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    isAnyMenuChecked = true;
+                }
+            });
+        
+            // Nếu có món nào được chọn ngoài Buffet, ẩn phần Buffet
+            if (isAnyMenuChecked) {
+                buffetSection.style.display = "none";
+            } else {
+                buffetSection.style.display = "block";
+            }
+        
+            // Nếu Buffet được chọn, ẩn tất cả các input số lượng
+            if (buffetCheckbox.checked) {
+                let quantityInputs = document.querySelectorAll('input[type="number"]');
+                quantityInputs.forEach((input) => {
+                    input.classList.add('hidden'); // Ẩn input số lượng
+                });
+            } else {
+                let quantityInputs = document.querySelectorAll('input[type="number"]');
+                quantityInputs.forEach((input) => {
+                    input.classList.remove('hidden'); // Hiển thị lại input số lượng
+                });
+            }
+        
+            // Nếu Buffet được chọn, vô hiệu hóa tất cả các món ăn khác
+            if (buffetCheckbox.checked) {
+                allMenuItems.forEach((checkbox) => {
+                    checkbox.disabled = true; // Vô hiệu hóa món ăn khác
+                    checkbox.checked = false; // Bỏ chọn tất cả món ăn khác
+                });
+            } else {
+                // Nếu Buffet không được chọn, kích hoạt lại tất cả các món ăn khác
+                allMenuItems.forEach((checkbox) => {
+                    checkbox.disabled = false; // Kích hoạt lại
+                });
+            }
+        }
+        
+        // Lắng nghe sự kiện khi tài liệu được tải
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lắng nghe sự kiện thay đổi cho tất cả checkbox trong menu
+            const menuCheckboxes = document.querySelectorAll('input[name="menu[]"]');
+            menuCheckboxes.forEach((checkbox) => {
+                checkbox.addEventListener('change', checkBuffetSelection); // Kiểm tra khi chọn món
+            });
+        
+            // Gọi lần đầu để kiểm tra trạng thái hiện tại của checkbox
+            checkBuffetSelection();
+        });        
     </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
 <body>
@@ -156,7 +257,8 @@ input[type="text"], input[type="tel"], input[type="email"] {
 					<li><a href="index.html">Trang Chủ</a></li>
 					<li><a href="web_nhahang.html">Đặt Phòng</a></li>
 					<li><a href="menu.html">Đặt món</a></li>
-					 <li><a href="#" onclick="showPhoneNumber()">Liên Hệ</a></li>
+					<li><a href="#" onclick="showPhoneNumber()">Liên Hệ</a></li>
+                    <li><a href="login.html" >Đăng xuất</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -285,10 +387,10 @@ input[type="text"], input[type="tel"], input[type="email"] {
         </fieldset>
 
         <!-- Menu Buffet -->
-        <fieldset>
+        <fieldset id="buffetSection">
 				<legend>Menu Buffet</legend>
             <div class="menu-item">
-                <input type="checkbox" id="goi_sua_buffet" name="menu[]" value="Buffet">
+                <input type="checkbox" id="goi_sua_buffet" name="menu[]" value="Buffet">         
                 <label for="goi_sua_buffet">Buffet</label>
             </div>
             <!-- Thêm các món buffet khác tương tự -->

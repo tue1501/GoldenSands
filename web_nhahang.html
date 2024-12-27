@@ -78,19 +78,13 @@
             font-weight: bold;
         }
 
-        .form-group select {
+        .form-group select, .form-group input {
             width: 92.7%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
 
-		.form-group input {
-            width: 90%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
         .form-actions {
             text-align: center;
         }
@@ -112,71 +106,112 @@
     </style>
     <script>
         function handleSubmit(event) {
-            event.preventDefault();
-            alert("Đặt phòng thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất có thể.");
-			   window.location.href = "index.html";
+            event.preventDefault(); // Prevents form from submitting
+
+            // Retrieve form data
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const cccd = document.getElementById('cccd').value;
+            const address = document.getElementById('address').value;
+            const email = document.getElementById('email').value;
+            const guests = document.getElementById('guests').value;
+            const room = document.getElementById('room').value;
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+
+            // Simple validation check
+            // Simple validation check
+            if (!name || !phone || !cccd || !address || !email || !guests || !room || !checkin || !checkout) {
+                // Kiểm tra từng trường và hiển thị thông báo yêu cầu nhập thông tin
+                if (!name) {
+                    alert(`Vui lòng nhập ${document.querySelector('label[for="name"]').textContent.toLowerCase()}`);
+                } else if (!phone) {
+                    alert(`Vui lòng nhập ${document.querySelector('label[for="phone"]').textContent.toLowerCase()}`);
+                } else if (!cccd) {
+                    alert(`Vui lòng nhập ${document.querySelector('label[for="cccd"]').textContent.toLowerCase()}`);
+                } else if (!address) {
+                    alert(`Vui lòng nhập ${document.querySelector('label[for="address"]').textContent.toLowerCase()}`);
+                } else if (!email) {
+                    alert(`Vui lòng nhập ${document.querySelector('label[for="email"]').textContent.toLowerCase()}`);
+                } else if (!guests) {
+                    alert(`Vui lòng nhập ${document.querySelector('label[for="guests"]').textContent.toLowerCase()}`);
+                } else if (!room) {
+                    alert(`Vui lòng chọn ${document.querySelector('label[for="room"]').textContent.toLowerCase()}`);
+                } else if (!checkin) {
+                    alert(`Vui lòng nhập ${document.querySelector('label[for="checkin"]').textContent.toLowerCase()}`);
+                } else if (!checkout) {
+                    alert(`Vui lòng nhập ${document.querySelector('label[for="checkout"]').textContent.toLowerCase()}`);
+                }
+                return;
+            }
+
+            // Show confirmation alert
+            alert(`Đặt phòng thành công!\nThông tin khách hàng:\nTên: ${name}\nSố điện thoại: ${phone}\nCCCD: ${cccd}\nĐịa chỉ: ${address}\nEmail: ${email}\nSố khách: ${guests}\nLoại phòng: ${room}\nNgày nhận phòng: ${checkin}\nNgày trả phòng: ${checkout}`);
+            
+            // Redirect to homepage after submission
+            window.location.href = "index.html";
         }
-		 function showPhoneNumber() {
-        // Show the alert with phone number
-        alert("Số điện thoại liên hệ là: 0969194193");
-    }
+
+        function showPhoneNumber() {
+            alert("Số điện thoại liên hệ là: 0969194193");
+        }
     </script>
 </head>
 <body>
-		<header>
-			<div class="logo">
-				<img src="index.jpg.jpg" alt="Logo">
-				<h1>Golden Sands Hotel</h1>
-			</div>
-			<nav>
-				<ul>
-					<li><a href="index.html">Trang Chủ</a></li>
-					<li><a href="web_nhahang.html">Đặt Phòng</a></li>
-					<li><a href="menu.html">Đặt món</a></li>
-					 <li><a href="#" onclick="showPhoneNumber()">Liên Hệ</a></li>
-				</ul>
-			</nav>
-		</header>
+    <header>
+        <div class="logo">
+            <img src="index.jpg.jpg" alt="Logo">
+            <h1>Golden Sands Hotel</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="web_nhahang.html">Đặt Phòng</a></li>
+                <li><a href="menu.html">Đặt món</a></li>
+                <li><a href="#" onclick="showPhoneNumber()">Liên Hệ</a></li>
+                <li><a href="login.html" >Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <div class="container">
         <h2>Thông Tin Đặt Phòng</h2>
         <form onsubmit="handleSubmit(event)">
             <div class="form-group">
                 <label for="checkin">Ngày nhận phòng</label>
-                <input type="date" id="checkin" name="checkin" required>
+                <input type="date" id="checkin" name="checkin" >
             </div>
             <div class="form-group">
                 <label for="checkout">Ngày trả phòng</label>
-                <input type="date" id="checkout" name="checkout" required>
+                <input type="date" id="checkout" name="checkout" >
             </div>
             <div class="form-group">
                 <label for="name">Họ tên</label>
-                <input type="text" id="name" name="name" placeholder="Nhập Họ tên" required>
+                <input type="text" id="name" name="name" placeholder="Nhập Họ tên" >
             </div>
             <div class="form-group">
                 <label for="phone">Số điện thoại</label>
-                <input type="tel" id="phone" name="phone" placeholder="Nhập Số điện thoại" required>
+                <input type="tel" id="phone" name="phone" placeholder="Nhập Số điện thoại" >
             </div>
             <div class="form-group">
-                <label for="email">CCCD</label>
-                <input type="phone" id="phone" name="phone" placeholder="Nhập CCCD" required>
+                <label for="cccd">CCCD</label>
+                <input type="text" id="cccd" name="cccd" placeholder="Nhập CCCD" >
             </div>
-			<div class="form-group">
-                <label for="email">Địa chỉ</label>
-                <input type="text" id="phone" name="phone" placeholder="Nhập Địa chỉ" required>
+            <div class="form-group">
+                <label for="address">Địa chỉ</label>
+                <input type="text" id="address" name="address" placeholder="Nhập Địa chỉ" >
             </div>
-						<div class="form-group">
+            <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="phone" name="phone" placeholder="Nhập Email" required>
+                <input type="email" id="email" name="email" placeholder="Nhập Email" >
             </div>
             <div class="form-group">
                 <label for="guests">Số lượng khách</label>
-
-                <input type="number" id="children" name="children" placeholder="Số lượng" required>
+                <input type="number" id="guests" name="guests" placeholder="Số lượng" >
             </div>
             <div class="form-group">
                 <label for="room">Phòng</label>
-                <select id="room" name="room" required>
+                <select id="room" name="room" >
                     <option value="">-- Chọn phòng --</option>
                     <option value="deluxe">Phòng Deluxe</option>
                     <option value="suite">Phòng Suite</option>
