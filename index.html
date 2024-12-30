@@ -69,26 +69,7 @@
         window.onload = function() {
             showPage(currentPage);
         };
-		document.addEventListener('DOMContentLoaded', () => {
-			const stars = document.querySelectorAll('.rating i');
-	
-			stars.forEach(star => {
-				star.addEventListener('click', (e) => {
-					const parent = e.target.parentElement;
-					const starIndex = Array.from(parent.children).indexOf(e.target);
-					
-					// Reset tất cả các sao
-					parent.querySelectorAll('i').forEach((s, index) => {
-						s.classList.remove('bi-star-fill');
-						s.classList.add('bi-star');
-						if (index <= starIndex) {
-							s.classList.remove('bi-star');
-							s.classList.add('bi-star-fill');
-						}
-					});
-				});
-			});
-		});
+		
     </script>
 </head>
 <body>
@@ -245,7 +226,7 @@
     </div>
             <div class="rating" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 30px; font-size: 1.5rem;">
                 <div>
-                    <span>Giá tiền</span>
+                    <span>Không gian</span>
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-fill"></i>
@@ -294,8 +275,8 @@
             </ul>
         </div>
         <div class="footer-social">
-            <a href="https://www.facebook.com/" class="social-icon"><i class="bi bi-facebook"></i></a>
-            <a href="https://www.instagram.com/" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.facebook.com/nguyen.at.287183" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/dat210904/" class="social-icon"><i class="bi bi-instagram"></i></a>
             <a href="https://x.com/?lang=vi" class="social-icon"><i class="bi bi-twitter"></i></a>
         </div>
     </div>
