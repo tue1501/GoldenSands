@@ -4,331 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
     <title>🌟 Golden Sands Hotel</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-
-        header {
-            background-color: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 50px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 50px;
-            margin-right: 10px;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #6200ea;
-        }
-
-        .hero {
-            position: relative;
-            text-align: center;
-            color: white;
-        }
-
-        .hero img {
-            width: 100%;
-            height: auto;
-        }
-
-        .hero .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero .overlay h1 {
-            font-size: 3rem;
-            margin: 0;
-            transform: translateY(-50px);
-        }
-
-        .hero .overlay p {
-            font-size: 1.2rem;
-            margin: 10px 0;
-        }
-
-        .hero .overlay button {
-            background-color: #6200ea;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .hero .overlay button:hover {
-            background-color: #6898eb;
-        }
-
-        .container {
-            padding: 20px;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 2rem;
-            color: #333;
-        }
-
-        .header span {
-            font-size: 1rem;
-            color: #666;
-        }
-
-        .rooms {
-            display: none;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .rooms.active {
-            display: flex;
-        }
-
-		.room-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .room-card {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            flex: 1;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .room-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .info {
-            padding: 15px;
-        }
-
-        .info h2 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: #333;
-        }
-
-        .info .details {
-            margin: 10px 0;
-            color: #666;
-            font-size: 1rem;
-        }
-
-        .info .price {
-            font-size: 1.2rem;
-            color: #6200ea;
-            font-weight: bold;
-        }
-
-        .info button {
-            background-color: #6200ea;
-            color: rgb(255, 255, 255);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .info button:hover {
-            background-color: #6898eb;
-        }
-
-        .navigation {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .navigation button {
-            background-color: #6200ea;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 50%;
-            margin: 0 10px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .navigation button:hover {
-            background-color: #d6e254;
-        }
-
-        .dots {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .dots span {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background-color: #ddd;
-            border-radius: 50%;
-            margin: 0 5px;
-        }
-
-        .dots .active {
-            background-color: rgb(63, 48, 197);
-        }
-
-		hr {
-            height: 1px; /* Chiều cao của <hr> */
-            background-color: black; /* Màu sắc */
-            border: none; /* Loại bỏ viền mặc định */
-            margin: 20px 0; /* Khoảng cách trên dưới */
-        }
-
-		.price {
-			font-size: 1.2rem !important; /* Đảm bảo kích thước font được áp dụng */
-			color: #ff5722 !important; /* Màu sắc nổi bật */
-			font-weight: bold !important; /* Làm đậm giá */
-			text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) !important; /* Đổ bóng cho văn bản */
-			margin: 10px 0 !important;
-		}
-
-		.reviews {
-            background-color: #fff;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .rating {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-        }
-
-        .rating i {
-            color: rgb(223, 223, 10);
-            margin: 0 5px;
-            cursor: pointer;
-        }
-		/* /////////////////////////////////////////////////////////////////////////// */
-
-		footer {
-			background-color: #333;
-			color: white;
-			text-align: center;
-			padding: 40px 0;
-			margin-top: 30px;
-		}
-	
-		.footer-container {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			flex-wrap: wrap;
-			max-width: 1000px;
-			margin: 0 auto;
-		}
-	
-		.footer-logo img {
-			height: 110px;
-		}
-	
-		.footer-links ul {
-			list-style: none;
-			padding: 0;
-		}
-	
-		.footer-links ul li {
-			display: inline;
-			margin: 0 15px;
-		}
-	
-		.footer-links ul li a {
-			color: white;
-			text-decoration: none;
-			font-size: 1.1rem;
-		}
-	
-		.footer-links ul li a:hover {
-			color: #d6e254;
-		}
-	
-		.footer-social {
-			margin-top: 10px;
-		}
-	
-		.social-icon {
-			font-size: 1.5rem;
-			color: white;
-			margin: 0 10px;
-			text-decoration: none;
-		}
-	
-		.social-icon:hover {
-			color: #d6e254;
-		}
-	
-		.footer-bottom {
-			margin-top: 20px;
-			font-size: 0.9rem;
-		}
-    </style>
     <script>
-
+        function showPhoneNumber() {
+            // Show the alert with phone number
+            alert("Số điện thoại liên hệ là: 0969194193");
+        }
+        function confirmLogout(event) {
+            // Ngừng hành động mặc định của liên kết
+            event.preventDefault();
+            
+            // Hiển thị hộp thoại xác nhận
+            const isConfirmed = confirm("Bạn có chắc chắn muốn đăng xuất?");
+            
+            // Nếu người dùng xác nhận, chuyển hướng đến trang login.html
+            if (isConfirmed) {
+                window.location.href = "login.html";  // Chuyển hướng đến trang đăng nhập
+            } else {
+                // Nếu người dùng không xác nhận, không làm gì (không chuyển trang)
+                console.log("Đăng xuất bị hủy bỏ.");
+            }
+        }
         let currentPage = 0; // Biến lưu trữ trang hiện tại
 
         // Hàm hiển thị trang hiện tại
@@ -412,7 +109,7 @@
     </header>
 
     <section class="hero">
-        <img src="home.jpg" alt="Khách Sạn">
+        <img src="https://quynhontourist.com/wp-content/uploads/2024/01/Starlight-Mot-trong-nhung-lua-chon-ly-tuong-de-ngam-bien-Quy-Nhon-tu-rooftop.jpg" alt="Khách Sạn">
         <div class="overlay">
             <h1>Chào Mừng Đến Với Khách Sạn</h1>
             <p>Trải nghiệm dịch vụ đẳng cấp 5<span style="color: gold;">⭐</span></p>
@@ -422,15 +119,44 @@
 <br> <br>
 	<hr>
 
+    <div class="resort-section">
+        <div class="resort-image">
+            <img src="https://acihome.vn/uploads/15/thiet-ke-khach-san-ven-bien-tuyet-dep-mang-hinh-dang-canh-buom-doc-dao-sailview-hotel-1.JPG" alt="Golden Sands Hotel" />
+        </div>
+        <div class="resort-content">
+            <h2 class="hello">Chào mừng bạn đến với Golden Sands Hotel!</h2>
+            <p>
+                Khu nghỉ dưỡng tọa lạc trên một trong những bờ biển đẹp nhất Việt Nam, mang đến kỳ nghỉ trong mơ và trải nghiệm khó quên.
+            </p>
+            <p>
+                Hòa mình vào không gian thoáng đãng với 285 phòng nghỉ hiện đại, mỗi phòng mở ra tầm nhìn tuyệt đẹp ra đại dương xanh ngát. 
+                Tận hưởng các tiện ích cao cấp bên bãi biển riêng trải dài 150m, cùng với các hoạt động giải trí suốt ngày đêm và chương trình biểu diễn hấp dẫn tại sân khấu G-Arena.
+            </p>
+            <p>
+                Hãy thư giãn tại hồ bơi vô cực nơi màu xanh của trời và biển giao hòa, tạo nên khung cảnh thơ mộng. 
+                Thưởng thức các món ăn đặc sắc và thức uống tinh tế tại các nhà hàng ven biển của khách sạn.
+            </p>
+            <p>
+                Golden Sands Hotel cũng tự hào mang đến không gian sự kiện đẳng cấp tại G-Hall, nơi hoàn hảo cho các cuộc họp, hội nghị hoặc sự kiện quan trọng, 
+                được thiết kế phù hợp với nhu cầu và phong cách của quý khách.
+            </p>
+            <p>
+                Tái tạo năng lượng tại Serenity Spa, lấy cảm hứng từ vẻ đẹp tự nhiên của biển cả, hoặc khám phá những hoạt động văn hóa và giải trí thú vị dành cho cả gia đình.
+            </p>
+            <p>
+                Hãy đến với Golden Sands Hotel để tận hưởng vẻ đẹp thiên nhiên hoang sơ cùng sự sang trọng vượt trội. 
+                Đội ngũ tận tâm của chúng tôi luôn sẵn sàng phục vụ và mang đến cho quý khách những trải nghiệm trọn vẹn nhất.
+            </p>
+        </div>
+    </div>
+    
     <div class="container">
         <div class="header">
             <h1>CÁC HẠNG PHÒNG</h1>
-			<br>
-            <span>Giá phòng từ ngày: 29-12-2024 ~ 31-12-2024</span>
+            <br>        
         </div>
-
-<br>
-
+        <br>
+    
         <div class="rooms active">
             <div class="room-card">
                 <img src="./img/1.jpg" alt="Deluxe King">
@@ -438,11 +164,11 @@
                     <h2>Deluxe King</h2>
                     <p class="details">32m² | 1 giường king size</p>
                     <p class="price">Chỉ từ 1,785,000 VNĐ / đêm</p>
-
+    
                     <button onclick="location.href='web_nhahang.html'">Đặt Ngay</button>
                 </div>
             </div>
-
+    
             <div class="room-card">
                 <img src="./img/2.jpg" alt="Deluxe Twin">
                 <div class="info">
@@ -452,7 +178,7 @@
                     <button onclick="location.href='web_nhahang.html'">Đặt Ngay</button>
                 </div>
             </div>
-
+    
             <div class="room-card">
                 <img src="./img/3.jpg" alt="Deluxe Family Triple">
                 <div class="info">
@@ -463,7 +189,7 @@
                 </div>
             </div>
         </div>
-
+    
         <div class="rooms">
             <div class="room-card">
                 <img src="./img/4.jpg" alt="Suite Room">
@@ -474,7 +200,7 @@
                     <button onclick="location.href='web_nhahang.html'">Đặt Ngay</button>
                 </div>
             </div>
-
+    
             <div class="room-card">
                 <img src="./img/5.jpg" alt="Superior Room">
                 <div class="info">
@@ -484,7 +210,7 @@
                     <button onclick="location.href='web_nhahang.html'">Đặt Ngay</button>
                 </div>
             </div>
-
+    
             <div class="room-card">
                 <img src="./img/6.jpg" alt="Presidential Suite">
                 <div class="info">
@@ -495,66 +221,64 @@
                 </div>
             </div>
         </div>
-
-		<div class="navigation">
-			<button onclick="prevPage()">
-				<!-- Mũi tên trái Bootstrap Icon -->
-				<i class="bi bi-arrow-left-short"></i>
-			</button>
-			<button onclick="nextPage()">
-				<!-- Mũi tên phải Bootstrap Icon -->
-				<i class="bi bi-arrow-right-short"></i>
-			</button>
-		</div>
-	
-
+    
+        <div class="navigation">
+            <button onclick="prevPage()">
+                <!-- Mũi tên trái Bootstrap Icon -->
+                <i class="bi bi-arrow-left-short"></i>
+            </button>
+            <button onclick="nextPage()">
+                <!-- Mũi tên phải Bootstrap Icon -->
+                <i class="bi bi-arrow-right-short"></i>
+            </button>
+        </div>
+    
+    
         <div class="dots">
             <span class="active"></span>
             <span></span>
         </div>
     </div>
-
     <!-- Đánh Giá Sao -->
     <section class="reviews">
         <h2>Đánh Giá Từ Khách Hàng Dành Cho Golden Sands Hotel</h2>
-        </div>
-		<div class="rating" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 30px; font-size: 1.5rem;">
-            <div>
-                <span>4</span>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <span>890 đánh giá</span>
+    </div>
+            <div class="rating" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 30px; font-size: 1.5rem;">
+                <div>
+                    <span>Giá tiền</span>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    
+                </div>
+                <div>
+                    <span>Vị trí</span>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                </div>
+                <div>
+                    <span>Sạch sẽ</span>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                </div>
+                <div>
+                    <span>Dịch vụ</span>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                </div>
             </div>
-            <div>
-                <span>Vị trí</span>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-            </div>
-            <div>
-                <span>Sạch sẽ</span>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-            </div>
-            <div>
-                <span>Dịch vụ</span>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-            </div>
-        </div>
-
-    </section>
+        </section>
 </body>
 
 <footer>
@@ -564,16 +288,15 @@
         </div>
         <div class="footer-links">
             <ul>
-                <li><a href="#">Trang Chủ</a></li>
+                <li><a href="index.html">Trang Chủ</a></li>
                 <li><a href="web_nhahang.html">Đặt Phòng</a></li>
-                <li><a href="#">Liên Hệ</a></li>
-                <li><a href="#">Về Chúng Tôi</a></li>
+                <li><a href="#" onclick="showPhoneNumber()">Liên Hệ</a></li>
             </ul>
         </div>
         <div class="footer-social">
-            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+            <a href="https://www.facebook.com/" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="https://x.com/?lang=vi" class="social-icon"><i class="bi bi-twitter"></i></a>
         </div>
     </div>
     <div class="footer-bottom">

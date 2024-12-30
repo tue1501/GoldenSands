@@ -9,9 +9,14 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb); /* Xanh dương pastel */
         }
-
+        .room {
+            width: 95.5%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
         header {
             background-color: #ffffff;
             display: flex;
@@ -78,7 +83,7 @@
             font-weight: bold;
         }
 
-        .form-group select, .form-group input {
+         .form-group input {
             width: 92.7%;
             padding: 10px;
             border: 1px solid #ccc;
@@ -103,6 +108,7 @@
         .form-actions button:hover {
             background-color: #3700b3;
         }
+
     </style>
     <script>
         function handleSubmit(event) {
@@ -226,11 +232,13 @@
             </div>
             <div class="form-group">
                 <label for="room">Phòng</label>
-                <select id="room" name="room" >
-                    <option value="">-- Chọn phòng --</option>
-                    <option value="deluxe">Phòng Deluxe</option>
-                    <option value="suite">Phòng Suite</option>
-                    <option value="standard">Phòng Standard</option>
+                <select class="room" id="room" name="room" >
+                    <option value="deluxe">Phòng Deluxe King</option>
+                    <option value="suite">Phòng Deluxe Twin</option>
+                    <option value="standard">Phòng Deluxe Family Triple</option>
+                    <option value="deluxe">Phòng Suite Room</option>
+                    <option value="suite">Phòng Superior Room</option>
+                    <option value="standard">Phòng Presidential Suite</option>
                 </select>
             </div>
             <div class="form-actions">
