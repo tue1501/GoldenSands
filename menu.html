@@ -138,6 +138,15 @@ input[type="text"], input[type="tel"], input[type="email"] {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+/* Chắc chắn rằng link không có gạch chân */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none; /* Giữ không có gạch chân khi hover */
+}
+
     </style>
     <script>
         function handleSubmit(event) {
@@ -337,10 +346,12 @@ input[type="text"], input[type="tel"], input[type="email"] {
     </div>
     <div id="content">
 <header>
-			<div class="logo">
-				<img src="index.jpg.jpg" alt="Logo">
-				<h1>Golden Sands Hotel</h1>
-			</div>
+    <a href="index.html">
+        <div class="logo">
+            <img src="index.jpg.jpg" alt="Logo">
+            <h1> Golden Sands Hotel ✯ </h1>
+        </div>
+    </a>
 			<nav>
 				<ul>
 					<li><a href="index.html">Trang Chủ</a></li>

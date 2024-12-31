@@ -11,5 +11,5 @@ window.addEventListener('load', function() {
     setTimeout(() => {
         loadingContainer.style.display = 'none'; // Ẩn loading
         content.style.display = 'block'; // Hiển thị nội dung
-    }, 3000); // 5000ms = 5 seconds
+    },0); // 5000ms = 5 seconds
 });

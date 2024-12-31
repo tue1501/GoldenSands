@@ -57,6 +57,22 @@ function nextPage() {
         showPage(currentPage);
     }
 }
+let currentIndex = 0;
+const slides = document.querySelectorAll('.hero .slider .slide');
+
+// Hàm đổi ảnh mỗi 3s
+function changeImage() {
+    slides[currentIndex].classList.remove('active'); // Ẩn ảnh hiện tại
+    currentIndex = (currentIndex + 1) % slides.length; // Chuyển sang ảnh tiếp theo
+    slides[currentIndex].classList.add('active'); // Hiển thị ảnh tiếp theo
+}
+
+// Thực hiện thay đổi ảnh mỗi 3s
+setInterval(changeImage, 2000);
+
+// Khởi tạo ảnh đầu tiên là visible
+slides[currentIndex].classList.add('active');
+
 
 // Gọi hàm `showPage` khi trang được tải lần đầu
 window.onload = function() {
