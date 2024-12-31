@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order - Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb); /* Pastel blue */
+        }
+
+        header {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #6200ea;
+        }
+
+        .menu-section {
+            margin: 20px;
+        }
+
+        .menu-section h2 {
+            color: #6200ea;
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-item {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .menu-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .menu-item input[type="number"] {
+            width: 80px;
+            margin-left: 10px;
+        }
+
+        .order-form {
+            max-width: 700px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-form select, .order-form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .order-form input {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .order-form button {
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .order-form button:hover {
+            background-color: #3700b3;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        input[type="text"], input[type="tel"], input[type="email"] {
+            width: 97%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Lấy tất cả các checkbox và số lượng nhập vào
+            const selectedItems = [];
+            const menuItems = document.querySelectorAll('input[name="menu[]"]:checked');
+            let isValid = true;  // Biến để kiểm tra tính hợp lệ của số lượng
+        
+            menuItems.forEach((checkbox) => {
+                const itemName = checkbox.value;
+                const quantityInput = document.querySelector(`#${checkbox.id}_qty`);
+                let quantity = quantityInput ? quantityInput.value : 0;
+        
+                // Nếu món là Buffet và số lượng chưa được nhập, gán mặc định là 1
+                if (itemName === 'Buffet' && (quantity === '' || quantity <= 0)) {
+                    quantity = 1;  // Số lượng mặc định cho Buffet là 1
+                }
+        
+                // Kiểm tra xem số lượng có hợp lệ không
+                if (quantity <= 0 || quantity === '') {
+                    isValid = false;
+                    alert(`Please enter the quantity for ${itemName}.`);  // Thông báo bằng tiếng Anh
+                    return;  // Dừng lại nếu số lượng không hợp lệ
+                }
+        
+                if (quantity > 0) {
+                    selectedItems.push(`${itemName} - Quantity: ${quantity}`);
+                }
+            });
+        
+            // Nếu không có món nào được chọn hoặc có món không hợp lệ
+            if (!isValid || selectedItems.length === 0) {
+                return;  // Dừng lại nếu có lỗi
+            }
+            
+            const orderSummary = selectedItems.join("\n");
+            alert("You have ordered the following items:\n" + orderSummary + "\nWe will contact you as soon as possible.");  // Thông báo thành công bằng tiếng Anh
+            
+            // Quay lại trang chủ hoặc làm gì đó sau khi đặt hàng thành công
+            window.location.href = "indexen.html";
+        }
+        
+        function showPhoneNumber() {
+            alert("Contact phone number: 0969194193");  // Thông báo bằng tiếng Anh
+        }
+        
+        // Hàm kiểm tra và vô hiệu hóa "Buffet" nếu chọn món khác
+        function checkBuffetSelection() {
+            // Lấy phần checkbox Buffet
+            let buffetCheckbox = document.getElementById("goi_sua_buffet");
+            // Lấy tất cả các checkbox món ăn ngoài Buffet
+            let allMenuItems = document.querySelectorAll('input[name="menu[]"]:not(#goi_sua_buffet)');
+            let buffetSection = document.getElementById("buffetSection"); // Phần Buffet
+        
+            // Kiểm tra nếu có món nào được chọn ngoài Buffet
+            let isAnyMenuChecked = false;
+            allMenuItems.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    isAnyMenuChecked = true;
+                }
+            });
+        
+            // Nếu có món nào được chọn ngoài Buffet, ẩn phần Buffet
+            if (isAnyMenuChecked) {
+                buffetSection.style.display = "none";
+            } else {
+                buffetSection.style.display = "block";
+            }
+        
+            // Nếu Buffet được chọn, ẩn tất cả các input số lượng
+            if (buffetCheckbox.checked) {
+                let quantityInputs = document.querySelectorAll('input[type="number"]');
+                quantityInputs.forEach((input) => {
+                    input.classList.add('hidden'); // Ẩn input số lượng
+                });
+            } else {
+                let quantityInputs = document.querySelectorAll('input[type="number"]');
+                quantityInputs.forEach((input) => {
+                    input.classList.remove('hidden'); // Hiển thị lại input số lượng
+                });
+            }
+        
+            // Nếu Buffet được chọn, vô hiệu hóa tất cả các món ăn khác
+            if (buffetCheckbox.checked) {
+                allMenuItems.forEach((checkbox) => {
+                    checkbox.disabled = true; // Vô hiệu hóa món ăn khác
+                    checkbox.checked = false; // Bỏ chọn tất cả món ăn khác
+                });
+            } else {
+                // Nếu Buffet không được chọn, kích hoạt lại tất cả các món ăn khác
+                allMenuItems.forEach((checkbox) => {
+                    checkbox.disabled = false; // Kích hoạt lại
+                });
+            }
+        }
+        
+        // Lắng nghe sự kiện khi tài liệu được tải
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lắng nghe sự kiện thay đổi cho tất cả checkbox trong menu
+            const menuCheckboxes = document.querySelectorAll('input[name="menu[]"]');
+            menuCheckboxes.forEach((checkbox) => {
+                checkbox.addEventListener('change', checkBuffetSelection); // Kiểm tra khi chọn món
+            });
+        
+            // Gọi lần đầu để kiểm tra trạng thái hiện tại của checkbox
+            checkBuffetSelection();
+        });
+        
+        function confirmLogout(event) {
+            // Ngừng hành động mặc định của liên kết
+            event.preventDefault();
+            
+            // Hiển thị hộp thoại xác nhận
+            const isConfirmed = confirm("Are you sure you want to log out?");  // Thông báo xác nhận bằng tiếng Anh
+            
+            // Nếu người dùng xác nhận, chuyển hướng đến trang login.html
+            if (isConfirmed) {
+                window.location.href = "login.html";  // Chuyển hướng đến trang đăng nhập
+            } else {
+                // Nếu người dùng không xác nhận, không làm gì (không chuyển trang)
+                console.log("Logout canceled.");
+            }
+        }         
+    </script>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="index.jpg.jpg" alt="Logo">
+        <h1>Golden Sands Hotel</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="indexen.html">Home</a></li>
+            <li><a href="web_nhahangen.html">Room Booking</a></li>
+            <li><a href="menuen.html">Order Food</a></li>
+            <li><a href="#" onclick="showPhoneNumber()">Contact</a></li>
+            <li><a href="login.html" onclick="confirmLogout(event)">Log out</a></li>
+            <div class="language-selector">
+                <a href="menu.html" class="language-button">
+                    <span class="language-icon">🌐</span> <!-- Globe icon -->
+                    <span class="language-text">Vietnamese</span>
+                </a>
+            </div>
+        </ul>
+    </nav>
+</header>
+<div class="order-form">
+    <h2>Order</h2>
+    <form onsubmit="handleSubmit(event)">
+        <!-- Full Name -->
+        <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group">
+            <label for="address">Room:</label>
+            <input type="text" id="address" name="address" placeholder="Enter your room number" required>
+        </div>
+
+        <!-- Appetizers -->
+        <fieldset>
+            <legend>Appetizers</legend>
+            <div class="menu-item">
+                <input type="checkbox" id="goi_sua" name="menu[]" value="Jellyfish Salad Quy Nhon - 120,000 VND">
+                <label for="goi_sua">Jellyfish Salad Quy Nhon - 120,000 VND</label>
+                <input type="number" id="goi_sua_qty" name="goi_sua_qty" min="1" placeholder="Quantity">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="cha_ca_banh_trang" name="menu[]" value="Fish Cake Rolls with Rice Paper - 100,000 VND">
+                <label for="cha_ca_banh_trang">Fish Cake Rolls with Rice Paper - 100,000 VND</label>
+                <input type="number" id="cha_ca_banh_trang_qty" name="cha_ca_banh_trang_qty" min="1" placeholder="Quantity">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="banh_it_la_gai" name="menu[]" value="Mini Sticky Rice Cake with Gai Leaf - 50,000 VND">
+                <label for="banh_it_la_gai">Mini Sticky Rice Cake with Gai Leaf - 50,000 VND</label>
+                <input type="number" id="banh_it_la_gai_qty" name="banh_it_la_gai_qty" min="1" placeholder="Quantity">
+            </div>
+        </fieldset>
+
+        <!-- Main Dishes -->
+        <fieldset>
+            <legend>Main Dishes</legend>
+            <div class="menu-item">
+                <input type="checkbox" id="bun_cha_ca" name="menu[]" value="Quy Nhon Fish Noodle Soup - 80,000 VND">
+                <label for="bun_cha_ca">Quy Nhon Fish Noodle Soup - 80,000 VND</label>
+                <input type="number" id="bun_cha_ca_qty" name="bun_cha_ca_qty" min="1" placeholder="Quantity">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="ca_thu_nuong" name="menu[]" value="Grilled Mackerel with Chili Salt - 250,000 VND">
+                <label for="ca_thu_nuong">Grilled Mackerel with Chili Salt - 250,000 VND</label>
+                <input type="number" id="ca_thu_nuong_qty" name="ca_thu_nuong_qty" min="1" placeholder="Quantity">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="banh_xeo_tom_nhay" name="menu[]" value="Shrimp Pancake - 120,000 VND">
+                <label for="banh_xeo_tom_nhay">Shrimp Pancake - 120,000 VND</label>
+                <input type="number" id="banh_xeo_tom_nhay_qty" name="banh_xeo_tom_nhay_qty" min="1" placeholder="Quantity">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="lau_rieu_cua" name="menu[]" value="Quy Nhon Crab Hotpot (for 4) - 350,000 VND">
+                <label for="lau_rieu_cua">Quy Nhon Crab Hotpot (for 4) - 350,000 VND</label>
+                <input type="number" id="lau_rieu_cua_qty" name="lau_rieu_cua_qty" min="1" placeholder="Quantity">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="ga_nuong_lu" name="menu[]" value="Binh Dinh Roasted Chicken - 300,000 VND">
+                <label for="ga_nuong_lu">Binh Dinh Roasted Chicken - 300,000 VND</label>
+                <input type="number" id="ga_nuong_lu_qty" name="ga_nuong_lu_qty" min="1" placeholder="Quantity">
+            </div>
+        </fieldset>
+
+        <!-- Snacks -->
+        <fieldset>
+            <legend>Snacks</legend>
+            <div class="menu-item">
+                <input type="checkbox" id="banh_hoi_long_heo" name="menu[]" value="Banh Hoi with Pork - 120,000 VND">
+                <label for="banh_hoi_long_heo">Banh Hoi with Pork - 120,000 VND</label>
+                <input type="number" id="banh_hoi_long_heo_qty" name="banh_hoi_long_heo_qty" min="1" placeholder="Quantity">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="nem_nuong_binh_dinh" name="menu[]" value="Binh Dinh Grilled Nem - 100,000 VND">
+                <label for="nem_nuong_binh_dinh">Binh Dinh Grilled Nem - 100,000 VND</label>
+                <input type="number" id="nem_nuong_binh_dinh_qty" name="nem_nuong_binh_dinh_qty" min="1" placeholder="Quantity">
+            </div>
+        </fieldset>
+
+        <!-- Desserts -->
+        <fieldset>
+            <legend>Desserts</legend>
+            <div class="menu-item">
+                <input type="checkbox" id="che_dau_xanh" name="menu[]" value="Quy Nhon Green Bean Sweet Soup - 50,000 VND">
+                <label for="che_dau_xanh">Quy Nhon Green Bean Sweet Soup - 50,000 VND</label>
+                <input type="number" id="che_dau_xanh_qty" name="che_dau_xanh_qty" min="1" placeholder="Quantity">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="banh_trang_me_dua" name="menu[]" value="Crispy Coconut Sesame Rice Paper - 30,000 VND">
+                <label for="banh_trang_me_dua">Crispy Coconut Sesame Rice Paper - 30,000 VND</label>
+                <input type="number" id="banh_trang_me_dua_qty" name="banh_trang_me_dua_qty" min="1" placeholder="Quantity">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="kem_dua_tuoi" name="menu[]" value="Fresh Coconut Ice Cream - 70,000 VND">
+                <label for="kem_dua_tuoi">Fresh Coconut Ice Cream - 70,000 VND</label>
+                <input type="number" id="kem_dua_tuoi_qty" name="kem_dua_tuoi_qty" min="1" placeholder="Quantity">
+            </div>
+        </fieldset>
+
+        <!-- Beverages -->
+        <fieldset>
+            <legend>Beverages</legend>
+            <div class="menu-item">
+                <input type="checkbox" id="nuoc_mia_sau_rieng" name="menu[]" value="Durian Sugarcane Juice - 40,000 VND">
+                <label for="nuoc_mia_sau_rieng">Durian Sugarcane Juice - 40,000 VND</label>
+                <input type="number" id="nuoc_mia_sau_rieng_qty" name="nuoc_mia_sau_rieng_qty" min="1" placeholder="Quantity">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="tra_hat_sen" name="menu[]" value="Quy Nhon Lotus Seed Tea - 50,000 VND">
+                <label for="tra_hat_sen">Quy Nhon Lotus Seed Tea - 50,000 VND</label>
+                <input type="number" id="tra_hat_sen_qty" name="tra_hat_sen_qty" min="1" placeholder="Quantity">
+            </div>
+            <div class="menu-item">
+                <input type="checkbox" id="ruou_bau_da" name="menu[]" value="Bau Da Wine (glass) - 100,000 VND">
+                <label for="ruou_bau_da">Bau Da Wine (glass) - 100,000 VND</label>
+                <input type="number" id="ruou_bau_da_qty" name="ruou_bau_da_qty" min="1" placeholder="Quantity">
+            </div>
+        </fieldset>
+
+        <!-- Buffet Menu -->
+        <fieldset id="buffetSection">
+            <legend>Buffet Menu</legend>
+            <div class="menu-item">
+                <input type="checkbox" id="goi_sua_buffet" name="menu[]" value="Buffet">
+                <label for="goi_sua_buffet">Buffet</label>
+            </div>
+        </fieldset>
+
+        <button type="submit">Place Order</button>
+    </form>
+</div>
+</body>
+</html>

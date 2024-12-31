@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đặt Phòng Khách Sạn</title>
+    <title>Hotel Room Booking</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #a1c4fd, #c2e9fb); /* Xanh dương pastel */
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb); /* Pastel blue */
         }
         .room {
             width: 95.5%;
@@ -127,54 +127,50 @@
             const checkout = document.getElementById('checkout').value;
 
             // Simple validation check
-            // Simple validation check
             if (!name || !phone || !cccd || !address || !email || !guests || !room || !checkin || !checkout) {
-                // Kiểm tra từng trường và hiển thị thông báo yêu cầu nhập thông tin
+                // Check each field and show a corresponding alert
                 if (!name) {
-                    alert(`Vui lòng nhập ${document.querySelector('label[for="name"]').textContent.toLowerCase()}`);
+                    alert(`Please enter your ${document.querySelector('label[for="name"]').textContent.toLowerCase()}`);
                 } else if (!phone) {
-                    alert(`Vui lòng nhập ${document.querySelector('label[for="phone"]').textContent.toLowerCase()}`);
+                    alert(`Please enter your ${document.querySelector('label[for="phone"]').textContent.toLowerCase()}`);
                 } else if (!cccd) {
-                    alert(`Vui lòng nhập ${document.querySelector('label[for="cccd"]').textContent.toLowerCase()}`);
+                    alert(`Please enter your ${document.querySelector('label[for="cccd"]').textContent.toLowerCase()}`);
                 } else if (!address) {
-                    alert(`Vui lòng nhập ${document.querySelector('label[for="address"]').textContent.toLowerCase()}`);
+                    alert(`Please enter your ${document.querySelector('label[for="address"]').textContent.toLowerCase()}`);
                 } else if (!email) {
-                    alert(`Vui lòng nhập ${document.querySelector('label[for="email"]').textContent.toLowerCase()}`);
+                    alert(`Please enter your ${document.querySelector('label[for="email"]').textContent.toLowerCase()}`);
                 } else if (!guests) {
-                    alert(`Vui lòng nhập ${document.querySelector('label[for="guests"]').textContent.toLowerCase()}`);
+                    alert(`Please enter the ${document.querySelector('label[for="guests"]').textContent.toLowerCase()}`);
                 } else if (!room) {
-                    alert(`Vui lòng chọn ${document.querySelector('label[for="room"]').textContent.toLowerCase()}`);
+                    alert(`Please select the ${document.querySelector('label[for="room"]').textContent.toLowerCase()}`);
                 } else if (!checkin) {
-                    alert(`Vui lòng nhập ${document.querySelector('label[for="checkin"]').textContent.toLowerCase()}`);
+                    alert(`Please enter the ${document.querySelector('label[for="checkin"]').textContent.toLowerCase()}`);
                 } else if (!checkout) {
-                    alert(`Vui lòng nhập ${document.querySelector('label[for="checkout"]').textContent.toLowerCase()}`);
+                    alert(`Please enter the ${document.querySelector('label[for="checkout"]').textContent.toLowerCase()}`);
                 }
                 return;
             }
 
             // Show confirmation alert
-            alert(`Đặt phòng thành công!\nThông tin khách hàng:\nTên: ${name}\nSố điện thoại: ${phone}\nCCCD: ${cccd}\nĐịa chỉ: ${address}\nEmail: ${email}\nSố khách: ${guests}\nLoại phòng: ${room}\nNgày nhận phòng: ${checkin}\nNgày trả phòng: ${checkout}`);
+            alert(`Room booked successfully!\nCustomer information:\nName: ${name}\nPhone: ${phone}\nCCCD: ${cccd}\nAddress: ${address}\nEmail: ${email}\nNumber of Guests: ${guests}\nRoom Type: ${room}\nCheck-in Date: ${checkin}\nCheck-out Date: ${checkout}`);
             
             // Redirect to homepage after submission
-            window.location.href = "index.html";
+            window.location.href = "indexen.html";
         }
 
         function showPhoneNumber() {
-            alert("Số điện thoại liên hệ là: 0969194193");
+            alert("Contact phone number is: 0969194193");
         }
         function confirmLogout(event) {
-            // Ngừng hành động mặc định của liên kết
             event.preventDefault();
             
-            // Hiển thị hộp thoại xác nhận
-            const isConfirmed = confirm("Bạn có chắc chắn muốn đăng xuất?");
+            // Confirmation dialog
+            const isConfirmed = confirm("Are you sure you want to log out?");
             
-            // Nếu người dùng xác nhận, chuyển hướng đến trang login.html
             if (isConfirmed) {
-                window.location.href = "login.html";  // Chuyển hướng đến trang đăng nhập
+                window.location.href = "login.html"; // Redirect to login page
             } else {
-                // Nếu người dùng không xác nhận, không làm gì (không chuyển trang)
-                console.log("Đăng xuất bị hủy bỏ.");
+                console.log("Logout canceled.");
             }
         }
     </script>
@@ -182,20 +178,20 @@
 <body>
     <header>
         <div class="logo">
-            <img src="index.jpg.jpg" alt="Logo">
+            <img src="indexen.jpg.jpg" alt="Logo">
             <h1>Golden Sands Hotel</h1>
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Trang Chủ</a></li>
-                <li><a href="web_nhahang.html">Đặt Phòng</a></li>
-                <li><a href="menu.html">Đặt món</a></li>
-                <li><a href="#" onclick="showPhoneNumber()">Liên Hệ</a></li>
-                <li><a href="login.html" onclick="confirmLogout(event)">Đăng xuất</a></li>
+                <li><a href="indexen.html">Home</a></li>
+                <li><a href="web_nhahangen.html">Book Room</a></li>
+                <li><a href="menuen.html">Order Food</a></li>
+                <li><a href="#" onclick="showPhoneNumber()">Contact</a></li>
+                <li><a href="login.html" onclick="confirmLogout(event)">Logout</a></li>
                 <div class="language-selector">
-                    <a href="web_nhahangen.html" class="language-button">
-                        <span class="language-icon">🌐</span> <!-- Biểu tượng quả địa cầu -->
-                        <span class="language-text">English</span>
+                    <a href="index.html" class="language-button">
+                        <span class="language-icon">🌐</span> <!-- Globe icon -->
+                        <span class="language-text">Vietnamese</span>
                     </a>
                 </div>
             </ul>
@@ -203,53 +199,53 @@
     </header>
 
     <div class="container">
-        <h2>Thông Tin Đặt Phòng</h2>
+        <h2>Room Booking Information</h2>
         <form onsubmit="handleSubmit(event)">
             <div class="form-group">
-                <label for="checkin">Ngày nhận phòng</label>
+                <label for="checkin">Check-in Date</label>
                 <input type="date" id="checkin" name="checkin" >
             </div>
             <div class="form-group">
-                <label for="checkout">Ngày trả phòng</label>
+                <label for="checkout">Check-out Date</label>
                 <input type="date" id="checkout" name="checkout" >
             </div>
             <div class="form-group">
-                <label for="name">Họ tên</label>
-                <input type="text" id="name" name="name" placeholder="Nhập Họ tên" >
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter Full Name" >
             </div>
             <div class="form-group">
-                <label for="phone">Số điện thoại</label>
-                <input type="tel" id="phone" name="phone" placeholder="Nhập Số điện thoại" >
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter Phone Number" >
             </div>
             <div class="form-group">
                 <label for="cccd">CCCD</label>
-                <input type="text" id="cccd" name="cccd" placeholder="Nhập CCCD" >
+                <input type="text" id="cccd" name="cccd" placeholder="Enter CCCD" >
             </div>
             <div class="form-group">
-                <label for="address">Địa chỉ</label>
-                <input type="text" id="address" name="address" placeholder="Nhập Địa chỉ" >
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="Enter Address" >
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Nhập Email" >
+                <input type="email" id="email" name="email" placeholder="Enter Email" >
             </div>
             <div class="form-group">
-                <label for="guests">Số lượng khách</label>
-                <input type="number" id="guests" name="guests" placeholder="Số lượng" >
+                <label for="guests">Number of Guests</label>
+                <input type="number" id="guests" name="guests" placeholder="Enter Number" >
             </div>
             <div class="form-group">
-                <label for="room">Phòng</label>
+                <label for="room">Room Type</label>
                 <select class="room" id="room" name="room" >
-                    <option value="deluxe">Phòng Deluxe King</option>
-                    <option value="suite">Phòng Deluxe Twin</option>
-                    <option value="standard">Phòng Deluxe Family Triple</option>
-                    <option value="deluxe">Phòng Suite Room</option>
-                    <option value="suite">Phòng Superior Room</option>
-                    <option value="standard">Phòng Presidential Suite</option>
+                    <option value="deluxe">Deluxe King Room</option>
+                    <option value="suite">Deluxe Twin Room</option>
+                    <option value="standard">Deluxe Family Triple Room</option>
+                    <option value="deluxe">Suite Room</option>
+                    <option value="suite">Superior Room</option>
+                    <option value="standard">Presidential Suite</option>
                 </select>
             </div>
             <div class="form-actions">
-                <button type="submit">Đặt Phòng</button>
+                <button type="submit">Book Room</button>
             </div>
         </form>
     </div>

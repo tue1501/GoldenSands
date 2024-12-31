@@ -6,73 +6,9 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <title>🌟 Golden Sands Hotel</title>
-    <script>
-        function showPhoneNumber() {
-            // Show the alert with phone number
-            alert("Số điện thoại liên hệ là: 0969194193");
-        }
-        function confirmLogout(event) {
-            // Ngừng hành động mặc định của liên kết
-            event.preventDefault();
-            
-            // Hiển thị hộp thoại xác nhận
-            const isConfirmed = confirm("Bạn có chắc chắn muốn đăng xuất?");
-            
-            // Nếu người dùng xác nhận, chuyển hướng đến trang login.html
-            if (isConfirmed) {
-                window.location.href = "login.html";  // Chuyển hướng đến trang đăng nhập
-            } else {
-                // Nếu người dùng không xác nhận, không làm gì (không chuyển trang)
-                console.log("Đăng xuất bị hủy bỏ.");
-            }
-        }
-        let currentPage = 0; // Biến lưu trữ trang hiện tại
-
-        // Hàm hiển thị trang hiện tại
-        function showPage(pageIndex) {
-            const rooms = document.querySelectorAll('.rooms');
-            const dots = document.querySelectorAll('.dots span');
-
-            rooms.forEach((room, index) => {
-                room.classList.remove('active');
-                if (index === pageIndex) {
-                    room.classList.add('active');
-                }
-            });
-
-            dots.forEach((dot, index) => {
-                dot.classList.remove('active');
-                if (index === pageIndex) {
-                    dot.classList.add('active');
-                }
-            });
-        }
-
-        // Hàm chuyển đến trang trước
-        function prevPage() {
-            if (currentPage > 0) {
-                currentPage--;
-                showPage(currentPage);
-            }
-        }
-
-        // Hàm chuyển đến trang tiếp theo
-        function nextPage() {
-            const rooms = document.querySelectorAll('.rooms');
-            if (currentPage < rooms.length - 1) {
-                currentPage++;
-                showPage(currentPage);
-            }
-        }
-
-        // Tự động gọi hàm showPage để hiển thị trang đầu tiên
-        window.onload = function() {
-            showPage(currentPage);
-        };
-		
-    </script>
 </head>
 <body>
+    <div class="lang-vi" >
     <header>
         <div class="logo">
             <img src="index.jpg.jpg" alt="Logo">
@@ -85,7 +21,14 @@
                 <li><a href="menu.html">Đặt món</a></li>
                 <li><a href="#" onclick="showPhoneNumber()">Liên Hệ</a></li>
                 <li><a href="login.html" onclick="confirmLogout(event)">Đăng xuất</a></li>
+                <div class="language-selector">
+                    <a href="indexen.html" class="language-button">
+                        <span class="language-icon">🌐</span> <!-- Biểu tượng quả địa cầu -->
+                        <span class="language-text">English</span>
+                    </a>
+                </div>
             </ul>
+            
         </nav>
     </header>
 
@@ -223,7 +166,6 @@
     <!-- Đánh Giá Sao -->
     <section class="reviews">
         <h2>Đánh Giá Từ Khách Hàng Dành Cho Golden Sands Hotel</h2>
-    </div>
             <div class="rating" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 30px; font-size: 1.5rem;">
                 <div>
                     <span>Không gian</span>
@@ -260,8 +202,6 @@
                 </div>
             </div>
         </section>
-</body>
-
 <footer>
     <div class="footer-container">
         <div class="footer-logo">
@@ -284,5 +224,7 @@
         <p>&copy; 2024 Golden Sands Hotel. Pleased to serve you.</p>
     </div>
 </footer>
-
+</div>
+</body>
+<script src="index.js"></script>
 </html>

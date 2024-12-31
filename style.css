@@ -1,0 +1,36 @@
+.language-selector {
+    margin-top: -8px;
+    display: inline-block; /* Hiển thị theo dạng inline */
+}
+
+.language-button {
+    align-items: center; /* Căn giữa theo trục dọc */
+    justify-content: center; /* Căn giữa nội dung */
+    padding: 10px 15px; /* Khoảng cách bên trong */
+    border: 2px solid #333; /* Viền đen */
+    border-radius: 30px; /* Bo góc tròn */
+    text-decoration: none; /* Loại bỏ gạch chân */
+    color: #333; /* Màu chữ */
+    font-size: 16px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ đậm */
+    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng hover */
+}
+
+/* Biểu tượng ngôn ngữ */
+.language-icon {
+    margin-right: 10px; /* Khoảng cách giữa biểu tượng và chữ */
+    font-size: 20px; /* Kích thước biểu tượng */
+}
+
+/* Mũi tên bên phải */
+.language-arrow {
+    margin-left: 10px; /* Khoảng cách giữa chữ và mũi tên */
+    font-size: 12px; /* Kích thước nhỏ hơn chữ */
+}
+
+/* Hiệu ứng khi hover */
+.language-button:hover {
+    background-color: #333; /* Màu nền khi hover */
+    color: #fff; /* Màu chữ khi hover */
+    border-color: #333; /* Màu viền khi hover */
+}
